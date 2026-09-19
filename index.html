@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TikTok Security Checkup</title>
+    <meta
+      name="description"
+      content="Una herramienta web para revisar y reforzar la seguridad de tus cuentas de TikTok."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">T</div>
+          <span>TikTok Security Checkup</span>
+        </div>
+        <nav class="nav">
+          <a href="#checklist">Checklist</a>
+          <a href="#score">Score</a>
+          <a href="#tips">Consejos</a>
+          <button class="ghost-button">Ver resumen</button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">Protección inteligente</span>
+            <h1>Fortalece tu cuenta y reduce riesgos en TikTok.</h1>
+            <p>
+              Revisa tus configuraciones, detecta puntos vulnerables y sigue una
+              ruta clara para proteger tu perfil, mensajes y contenido.
+            </p>
+            <div class="hero-actions">
+              <a href="#checklist" class="primary-button">Empezar revisión</a>
+              <button class="secondary-button" id="simulate-risk">Simular alerta</button>
+            </div>
+            <ul class="hero-metrics">
+              <li>
+                <strong>94%</strong>
+                <span>usuarios que deberían activar 2FA</span>
+              </li>
+              <li>
+                <strong>3x</strong>
+                <span>más riesgo con contraseñas reutilizadas</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-panel">
+            <div class="panel-card status-card">
+              <div class="status-head">
+                <span>Estado de seguridad</span>
+                <span class="pill success">Protegida</span>
+              </div>
+              <div class="ring-wrap">
+                <div class="score-ring" data-score="82">
+                  <div class="score-ring-inner">
+                    <strong id="hero-score">82</strong>
+                    <small>/100</small>
+                  </div>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <div>
+                  <span>2FA</span>
+                  <strong>Activa</strong>
+                </div>
+                <div>
+                  <span>Sesiones</span>
+                  <strong>2 accesos</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="score-overview" id="score">
+          <div class="panel-card overview-panel">
+            <div class="section-heading">
+              <span class="eyebrow">Resumen</span>
+              <h2>Tu score de seguridad</h2>
+            </div>
+            <div class="score-bars">
+              <div class="bar-item">
+                <label>Autenticación</label>
+                <div class="bar"><span style="width: 88%"></span></div>
+                <small>88%</small>
+              </div>
+              <div class="bar-item">
+                <label>Privacidad</label>
+                <div class="bar"><span style="width: 76%"></span></div>
+                <small>76%</small>
+              </div>
+              <div class="bar-item">
+                <label>Dispositivos</label>
+                <div class="bar"><span style="width: 91%"></span></div>
+                <small>91%</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="checklist-section" id="checklist">
+          <div class="section-heading centered">
+            <span class="eyebrow">Checklist</span>
+            <h2>Revisión rápida de seguridad</h2>
+          </div>
+
+          <div class="checklist-grid">
+            <article class="check-item done">
+              <label class="toggle-row">
+                <input type="checkbox" checked />
+                <span class="toggle-box"></span>
+                <span class="label-text">Contraseña fuerte y única</span>
+              </label>
+              <small>Usa 12+ caracteres con letras, números y símbolos.</small>
+            </article>
+
+            <article class="check-item done">
+              <label class="toggle-row">
+                <input type="checkbox" checked />
+                <span class="toggle-box"></span>
+                <span class="label-text">Verificación en dos pasos</span>
+              </label>
+              <small>Activa la autenticación de dos factores.</small>
+            </article>
+
+            <article class="check-item danger">
+              <label class="toggle-row">
+                <input type="checkbox" />
+                <span class="toggle-box"></span>
+                <span class="label-text">Revisar sesión de terceros</span>
+              </label>
+              <small>Hay un acceso sospechoso desde un navegador no reconocido.</small>
+            </article>
+
+            <article class="check-item">
+              <label class="toggle-row">
+                <input type="checkbox" />
+                <span class="toggle-box"></span>
+                <span class="label-text">Activar alertas de inicio de sesión</span>
+              </label>
+              <small>Recibe una notificación cada vez que entren desde otro equipo.</small>
+            </article>
+
+            <article class="check-item">
+              <label class="toggle-row">
+                <input type="checkbox" />
+                <span class="toggle-box"></span>
+                <span class="label-text">Configurar privacidad de mensajes</span>
+              </label>
+              <small>Limita quién puede mandar mensajes directos.</small>
+            </article>
+
+            <article class="check-item">
+              <label class="toggle-row">
+                <input type="checkbox" />
+                <span class="toggle-box"></span>
+                <span class="label-text">Controlar dispositivos conectados</span>
+              </label>
+              <small>Cierra sesiones antiguas o no usadas.</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="security-grid" id="tips">
+          <div class="panel-card">
+            <div class="section-heading small">
+              <span class="eyebrow">Alertas</span>
+              <h3>Actividad reciente</h3>
+            </div>
+            <ul class="activity-list">
+              <li>
+                <span class="dot warning"></span>
+                Inicio de sesión desde Chrome en Windows hace 2 horas.
+              </li>
+              <li>
+                <span class="dot info"></span>
+                Actualización de seguridad completada correctamente.
+              </li>
+              <li>
+                <span class="dot success"></span>
+                Tu contraseña fue renovada hace 10 días.
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel-card">
+            <div class="section-heading small">
+              <span class="eyebrow">Recomendaciones</span>
+              <h3>Qué hacer ahora</h3>
+            </div>
+            <ol class="tips-list">
+              <li>Cierra todas las sesiones no reconocidas.</li>
+              <li>Activa alertas por cambio de contraseña y acceso nuevo.</li>
+              <li>Usa un gestor de contraseñas para evitar reutilización.</li>
+              <li>Revisa la privacidad de tu perfil, videos y mensajes.</li>
+            </ol>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
