@@ -1,33 +1,21 @@
 # TikTok Security Checkup
 
-Una web moderna para revisar y reforzar la seguridad de tus cuentas de TikTok.
+Panel de control tipo aplicación para revisar buenas prácticas de seguridad, sesiones y privacidad.
 
-## Qué incluye
-- Landing page con estilo moderno
-- Dashboard de seguridad con score visual
-- Checklist interactivo de buenas prácticas
-- Alertas y recomendaciones de protección
-- Diseño responsivo para móvil y escritorio
+> **Importante:** esta interfaz es una demo local. No solicita ni almacena credenciales y no se conecta a TikTok. Para proteger una cuenta real, realiza los cambios desde la aplicación oficial de TikTok.
 
-## Cómo ejecutar
-1. Descarga o clona este repositorio.
-2. Abre `index.html` en tu navegador.
-3. O usa un servidor local simple como:
+## Incluye
+- Panel general con score, métricas y actividad reciente.
+- Navegación lateral tipo aplicación.
+- Checklist interactivo con progreso guardado en `localStorage`.
+- Vista de sesiones activas y controles de privacidad de ejemplo.
+- Diseño responsive para escritorio, tablet y móvil.
+
+## Ejecutar
+Abre `index.html` directamente en el navegador o inicia un servidor local:
 
 ```bash
 python -m http.server 8000
 ```
 
-Luego visita:
-
-```text
-http://localhost:8000
-```
-
-## Objetivo
-Ayudar a los usuarios a detectar riesgos comunes, reforzar autenticación, revisar sesiones y mejorar la privacidad de sus cuentas de TikTok.
-
-## Tecnologías
-- HTML5
-- CSS3
-- JavaScript vanilla
+Después visita `http://localhost:8000`.

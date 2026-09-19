@@ -3,214 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TikTok Security Checkup</title>
-    <meta
-      name="description"
-      content="Una herramienta web para revisar y reforzar la seguridad de tus cuentas de TikTok."
-    />
+    <title>Security Hub · TikTok Security Checkup</title>
+    <meta name="description" content="Panel de control de seguridad para revisar y mejorar la protección de tu cuenta." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <div class="brand">
-          <div class="brand-mark">T</div>
-          <span>TikTok Security Checkup</span>
-        </div>
-        <nav class="nav">
-          <a href="#checklist">Checklist</a>
-          <a href="#score">Score</a>
-          <a href="#tips">Consejos</a>
-          <button class="ghost-button">Ver resumen</button>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand"><span class="brand-mark">T</span><span>Security Hub</span></div>
+        <div class="account-mini"><div class="avatar">C</div><div><strong>@codigoloko</strong><small>Cuenta personal</small></div></div>
+        <nav class="side-nav" aria-label="Navegación principal">
+          <button class="nav-item active" data-view="dashboard"><span>⌂</span>Panel general</button>
+          <button class="nav-item" data-view="checklist"><span>✓</span>Checklist</button>
+          <button class="nav-item" data-view="sessions"><span>◉</span>Sesiones activas</button>
+          <button class="nav-item" data-view="privacy"><span>◌</span>Privacidad</button>
         </nav>
-      </header>
+        <div class="sidebar-bottom"><div class="support-card"><span class="support-icon">?</span><strong>¿Necesitas ayuda?</strong><small>Aprende a reconocer intentos de phishing.</small><a href="#tips">Ver consejos →</a></div><button class="settings-button">⚙ Configuración</button></div>
+      </aside>
 
-      <main>
-        <section class="hero">
-          <div class="hero-copy">
-            <span class="eyebrow">Protección inteligente</span>
-            <h1>Fortalece tu cuenta y reduce riesgos en TikTok.</h1>
-            <p>
-              Revisa tus configuraciones, detecta puntos vulnerables y sigue una
-              ruta clara para proteger tu perfil, mensajes y contenido.
-            </p>
-            <div class="hero-actions">
-              <a href="#checklist" class="primary-button">Empezar revisión</a>
-              <button class="secondary-button" id="simulate-risk">Simular alerta</button>
+      <div class="main-area">
+        <header class="topbar">
+          <button class="menu-button" id="menu-button" aria-label="Abrir menú">☰</button>
+          <div class="breadcrumb"><span>Security Hub</span><b>/</b><strong id="breadcrumb-current">Panel general</strong></div>
+          <div class="top-actions"><button class="icon-button" id="notification-button" aria-label="Notificaciones">♢<i></i></button><button class="profile-button"><span class="avatar small">C</span><span>Codigoloko</span><span>⌄</span></button></div>
+        </header>
+
+        <main class="content">
+          <section class="view active" id="dashboard-view">
+            <div class="page-heading"><div><span class="eyebrow">Sábado, 19 de septiembre</span><h1>Hola, Codigoloko 👋</h1><p>Aquí tienes el resumen de seguridad de tu cuenta.</p></div><button class="primary-button" id="run-checkup">↻ Ejecutar revisión</button></div>
+            <div class="notice" id="notice"><span class="notice-icon">!</span><div><strong>Tienes 3 recomendaciones pendientes</strong><p>Completa estas acciones para elevar tu protección al siguiente nivel.</p></div><button class="notice-close" aria-label="Cerrar aviso">×</button></div>
+            <div class="stats-grid">
+              <article class="stat-card score-card"><div class="stat-title"><span>Score de seguridad</span><span class="trend up">↗ +8%</span></div><div class="score-content"><div class="score-ring"><div><strong id="main-score">82</strong><small>/100</small></div></div><div><strong class="score-label">Buena protección</strong><p>Tu cuenta está bastante segura, pero aún hay mejoras disponibles.</p><a href="#checklist" data-view-link="checklist">Ver detalles →</a></div></div></article>
+              <article class="stat-card"><div class="stat-title"><span>Autenticación</span><span class="card-icon green">✓</span></div><strong class="big-number">2 <small>/ 2</small></strong><p class="muted">métodos de acceso activos</p><div class="progress"><span style="width:100%"></span></div><span class="status-text green-text">Protección completa</span></article>
+              <article class="stat-card"><div class="stat-title"><span>Sesiones activas</span><span class="card-icon blue">◉</span></div><strong class="big-number">2</strong><p class="muted">dispositivos conectados</p><div class="device-row"><span>● Chrome · Windows</span><span class="online">Activo</span></div><a href="#sessions" data-view-link="sessions">Administrar sesiones →</a></article>
             </div>
-            <ul class="hero-metrics">
-              <li>
-                <strong>94%</strong>
-                <span>usuarios que deberían activar 2FA</span>
-              </li>
-              <li>
-                <strong>3x</strong>
-                <span>más riesgo con contraseñas reutilizadas</span>
-              </li>
-            </ul>
-          </div>
 
-          <div class="hero-panel">
-            <div class="panel-card status-card">
-              <div class="status-head">
-                <span>Estado de seguridad</span>
-                <span class="pill success">Protegida</span>
-              </div>
-              <div class="ring-wrap">
-                <div class="score-ring" data-score="82">
-                  <div class="score-ring-inner">
-                    <strong id="hero-score">82</strong>
-                    <small>/100</small>
-                  </div>
-                </div>
-              </div>
-              <div class="mini-stats">
-                <div>
-                  <span>2FA</span>
-                  <strong>Activa</strong>
-                </div>
-                <div>
-                  <span>Sesiones</span>
-                  <strong>2 accesos</strong>
-                </div>
-              </div>
+            <div class="dashboard-grid">
+              <article class="panel-card chart-card"><div class="panel-heading"><div><h2>Actividad de seguridad</h2><p>Últimos 7 días</p></div><button class="period-button">Esta semana⌄</button></div><div class="chart"><div class="y-axis"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div><div class="chart-area"><div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div><svg viewBox="0 0 600 190" preserveAspectRatio="none" aria-label="Gráfica de actividad"><defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ff2d55" stop-opacity=".28"/><stop offset="1" stop-color="#ff2d55" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 146 C50 132 75 145 120 110 S190 124 230 92 S295 108 340 74 S400 105 440 65 S510 85 600 42 V190 H0Z"/><path class="line" d="M0 146 C50 132 75 145 120 110 S190 124 230 92 S295 108 340 74 S400 105 440 65 S510 85 600 42"/></svg><div class="x-axis"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div></div></div></article>
+              <article class="panel-card quick-card"><div class="panel-heading"><div><h2>Acciones rápidas</h2><p>Mejora tu seguridad</p></div><span class="more">•••</span></div><div class="quick-list"><button data-view-link="checklist"><span class="quick-icon pink">✓</span><span><strong>Completar checklist</strong><small>3 tareas pendientes</small></span><b>›</b></button><button data-view-link="sessions"><span class="quick-icon purple">◉</span><span><strong>Revisar dispositivos</strong><small>2 sesiones activas</small></span><b>›</b></button><button data-view-link="privacy"><span class="quick-icon blue">◌</span><span><strong>Ajustar privacidad</strong><small>2 recomendaciones</small></span><b>›</b></button></div></article>
             </div>
-          </div>
-        </section>
+            <div class="dashboard-grid bottom-grid" id="tips"><article class="panel-card activity-card"><div class="panel-heading"><div><h2>Actividad reciente</h2><p>Eventos importantes de tu cuenta</p></div><a href="#sessions" data-view-link="sessions">Ver todo →</a></div><ul class="event-list"><li><span class="event-icon warning">!</span><div><strong>Inicio de sesión detectado</strong><small>Chrome en Windows · Hace 2 horas</small></div><em>Revisar</em></li><li><span class="event-icon success">✓</span><div><strong>Contraseña actualizada</strong><small>Desde este dispositivo · Hace 10 días</small></div><em class="done">Completado</em></li><li><span class="event-icon info">i</span><div><strong>Verificación en dos pasos activada</strong><small>Hace 18 días</small></div><em class="done">Completado</em></li></ul></article><article class="panel-card tip-card"><span class="tip-label">CONSEJO DE SEGURIDAD</span><h2>No compartas tus códigos de verificación</h2><p>Ningún representante de TikTok te pedirá tu contraseña ni códigos de acceso por mensaje.</p><button class="secondary-button" id="next-tip">Entendido</button></article></div>
+          </section>
 
-        <section class="score-overview" id="score">
-          <div class="panel-card overview-panel">
-            <div class="section-heading">
-              <span class="eyebrow">Resumen</span>
-              <h2>Tu score de seguridad</h2>
-            </div>
-            <div class="score-bars">
-              <div class="bar-item">
-                <label>Autenticación</label>
-                <div class="bar"><span style="width: 88%"></span></div>
-                <small>88%</small>
-              </div>
-              <div class="bar-item">
-                <label>Privacidad</label>
-                <div class="bar"><span style="width: 76%"></span></div>
-                <small>76%</small>
-              </div>
-              <div class="bar-item">
-                <label>Dispositivos</label>
-                <div class="bar"><span style="width: 91%"></span></div>
-                <small>91%</small>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="checklist-section" id="checklist">
-          <div class="section-heading centered">
-            <span class="eyebrow">Checklist</span>
-            <h2>Revisión rápida de seguridad</h2>
-          </div>
-
-          <div class="checklist-grid">
-            <article class="check-item done">
-              <label class="toggle-row">
-                <input type="checkbox" checked />
-                <span class="toggle-box"></span>
-                <span class="label-text">Contraseña fuerte y única</span>
-              </label>
-              <small>Usa 12+ caracteres con letras, números y símbolos.</small>
-            </article>
-
-            <article class="check-item done">
-              <label class="toggle-row">
-                <input type="checkbox" checked />
-                <span class="toggle-box"></span>
-                <span class="label-text">Verificación en dos pasos</span>
-              </label>
-              <small>Activa la autenticación de dos factores.</small>
-            </article>
-
-            <article class="check-item danger">
-              <label class="toggle-row">
-                <input type="checkbox" />
-                <span class="toggle-box"></span>
-                <span class="label-text">Revisar sesión de terceros</span>
-              </label>
-              <small>Hay un acceso sospechoso desde un navegador no reconocido.</small>
-            </article>
-
-            <article class="check-item">
-              <label class="toggle-row">
-                <input type="checkbox" />
-                <span class="toggle-box"></span>
-                <span class="label-text">Activar alertas de inicio de sesión</span>
-              </label>
-              <small>Recibe una notificación cada vez que entren desde otro equipo.</small>
-            </article>
-
-            <article class="check-item">
-              <label class="toggle-row">
-                <input type="checkbox" />
-                <span class="toggle-box"></span>
-                <span class="label-text">Configurar privacidad de mensajes</span>
-              </label>
-              <small>Limita quién puede mandar mensajes directos.</small>
-            </article>
-
-            <article class="check-item">
-              <label class="toggle-row">
-                <input type="checkbox" />
-                <span class="toggle-box"></span>
-                <span class="label-text">Controlar dispositivos conectados</span>
-              </label>
-              <small>Cierra sesiones antiguas o no usadas.</small>
-            </article>
-          </div>
-        </section>
-
-        <section class="security-grid" id="tips">
-          <div class="panel-card">
-            <div class="section-heading small">
-              <span class="eyebrow">Alertas</span>
-              <h3>Actividad reciente</h3>
-            </div>
-            <ul class="activity-list">
-              <li>
-                <span class="dot warning"></span>
-                Inicio de sesión desde Chrome en Windows hace 2 horas.
-              </li>
-              <li>
-                <span class="dot info"></span>
-                Actualización de seguridad completada correctamente.
-              </li>
-              <li>
-                <span class="dot success"></span>
-                Tu contraseña fue renovada hace 10 días.
-              </li>
-            </ul>
-          </div>
-
-          <div class="panel-card">
-            <div class="section-heading small">
-              <span class="eyebrow">Recomendaciones</span>
-              <h3>Qué hacer ahora</h3>
-            </div>
-            <ol class="tips-list">
-              <li>Cierra todas las sesiones no reconocidas.</li>
-              <li>Activa alertas por cambio de contraseña y acceso nuevo.</li>
-              <li>Usa un gestor de contraseñas para evitar reutilización.</li>
-              <li>Revisa la privacidad de tu perfil, videos y mensajes.</li>
-            </ol>
-          </div>
-        </section>
-      </main>
+          <section class="view" id="checklist-view"><div class="page-heading"><div><span class="eyebrow">Protección</span><h1>Checklist de seguridad</h1><p>Completa estas tareas para mantener tu cuenta protegida.</p></div></div><div class="panel-card full-panel"><div class="check-progress"><div><strong><span id="completed-count">2</span> de 6 tareas completadas</strong><p>Tu progreso se guarda en este navegador.</p></div><div class="progress wide"><span id="check-progress-bar" style="width:33%"></span></div></div><div class="full-checklist" id="full-checklist"></div></div></section>
+          <section class="view" id="sessions-view"><div class="page-heading"><div><span class="eyebrow">Accesos</span><h1>Sesiones activas</h1><p>Revisa dónde está abierta tu cuenta. Esta demo no se conecta a TikTok.</p></div></div><div class="panel-card full-panel"><div class="session-item"><span class="device-icon">▣</span><div><strong>Chrome en Windows</strong><small>Ciudad de México · Último acceso hace 2 horas</small></div><span class="session-status">Este dispositivo</span><button class="session-action">Cerrar sesión</button></div><div class="session-item"><span class="device-icon mobile">▯</span><div><strong>iPhone 15 Pro</strong><small>Ciudad de México · Último acceso ayer</small></div><span class="session-status online-text">Activo</span><button class="session-action">Cerrar sesión</button></div></div></section>
+          <section class="view" id="privacy-view"><div class="page-heading"><div><span class="eyebrow">Control</span><h1>Privacidad de la cuenta</h1><p>Recomendaciones para decidir quién puede interactuar contigo.</p></div></div><div class="privacy-grid"><div class="panel-card privacy-option"><span class="quick-icon blue">◌</span><div><strong>Cuenta privada</strong><p>Controla quién puede ver tus videos y seguirte.</p></div><label class="switch"><input type="checkbox" /><span></span></label></div><div class="panel-card privacy-option"><span class="quick-icon pink">✉</span><div><strong>Mensajes directos</strong><p>Limita los mensajes de personas que no conoces.</p></div><label class="switch"><input type="checkbox" checked /><span></span></label></div><div class="panel-card privacy-option"><span class="quick-icon purple">♢</span><div><strong>Alertas de inicio de sesión</strong><p>Recibe avisos cuando haya un nuevo acceso.</p></div><label class="switch"><input type="checkbox" checked /><span></span></label></div></div></section>
+        </main>
+      </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
